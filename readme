@@ -1,0 +1,8 @@
+The Temperature Converter is a user-friendly web application that allows you to convert temperatures between Celsius, 
+Fahrenheit, and Kelvin units. It features a minimalistic design with an input field where you can enter the temperature
+value and a dropdown menu to select the unit of the input temperature.
+
+To perform the conversion, simply enter a temperature value and select the corresponding unit. Click the
+"Convert" button, and the website will display the converted temperature in the remaining two units below the button.
+
+
