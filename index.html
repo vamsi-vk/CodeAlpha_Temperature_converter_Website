@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <input type="number" id="temperature" placeholder="Enter temperature" />
+        <select id="unit">
+            <option value="celsius">Celsius to Fahrenheit</option>
+            <option value="fahrenheit">Fahrenheit to Celsius</option>
+            <option value="kelvin">Kelvin to Celsius</option>
+        </select>
+        <button onclick="convertTemperature()">Convert</button>
+        <button onclick="reset()">Reset</button>
+        <h2 id="result"></h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px 0;
+  margin: 10px 0;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+h2 {
+  color: #333;
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+</style>
+<script>
+function convertTemperature() {
+    var temperature = parseFloat(document.getElementById('temperature').value);
+    var unit = document.getElementById('unit').value;
+    var result = document.getElementById('result');
+
+    if (isNaN(temperature)) {
+        result.innerHTML = "Invalid temperature value";
+        return;
+    }
+
+    if (unit === "celsius") {
+        var fahrenheit = (temperature * 9 / 5) + 32;
+        result.innerHTML = temperature + "°C is equal to " + fahrenheit.toFixed(2) + "°F";
+    } else if (unit === "fahrenheit") {
+        var celsius = (temperature - 32) * 5 / 9;
+        result.innerHTML = temperature + "°F is equal to " + celsius.toFixed(2) + "°C";
+    } else if (unit === "kelvin") {
+        var celsius = temperature - 273.15;
+        result.innerHTML = temperature + "K is equal to " + celsius.toFixed(2) + "°C";
+    }
+}
+
+function reset() {
+    document.getElementById('temperature').value = "";
+    document.getElementById('unit').selectedIndex = 0;
+    document.getElementById('result').innerHTML = "";
+}
+
+</script>
